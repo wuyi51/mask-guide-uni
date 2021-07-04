@@ -5,27 +5,38 @@
 
 ## 1.0.0 （2021-07-04）
 ----
-使用方法
+
+目标容器
+
+* 通过 `id="guide_顺序` 实现引导顺序
+* `data-guide-text` 属性设置提示文字
+
+```
+<view id="guide_0" data-guide-text="提示1"></view>
+<view id="guide_1" data-guide-text="提示2"></view>
+```
+
+组件使用方法
+
+* 调用`start()`方法
+* 通过`slot='nextButton'`可自定义 下一步 按钮
+
 ```
 <mask-guide-uni ref="maskGuide">
- <view slot='nextButton'>next</view>
+  <view slot='nextButton'>我知道啦~</view>
 </mask-guide-uni>
 
 this.$refs.maskGuide.start({
-	textStyle:{
-		fontSize: '24rpx',
-	},
-	showNextButton: false
+  textStyle:{
+    fontSize: '24rpx',
+  },
+  showNextButton: false
 })
 ```
 
-字段|是否必须|说明
------|------|------
-callback|是|确认按钮的回调函数
-mode|否|1:仅密码  2:仅指纹  3:指纹密码可切换 
-passwordTitle|否|标题（输入密码）
-fingerprintTitle|否|标题（指纹）
-types|否|默认显示方式 1密码 2指纹
-confirmText|否|确认按钮文本
-cancelText|否|取消按钮文本
-fingerprintDesc|否|指纹面板描述
+start参数说明
+
+字段|是否必须|类型|默认值|说明
+-----|------|------|------|------
+textStyle|否|Object|{}|提示文字样式
+showNextButton|否|Boolean|true|是否显示 '我知道啦' 按钮 
